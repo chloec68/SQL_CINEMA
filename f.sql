@@ -1,0 +1,2 @@
+-- Casting d'un film en particulier (id_film)
+-- : nom, prénom des acteurs + sexe 
