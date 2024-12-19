@@ -82,12 +82,12 @@ CREATE TABLE IF NOT EXISTS `movie` (
   `poster` varchar(255) NOT NULL DEFAULT '0',
   `id_realisator` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_movie`),
-  KEY `id_realisator` (`id_realisator`),
-  CONSTRAINT `FK_movie_realisator` FOREIGN KEY (`id_realisator`) REFERENCES `realisator` (`id_realisator`)
+  KEY `id_director` (`id_director`),
+  CONSTRAINT `FK_movie_director` FOREIGN KEY (`id_director`) REFERENCES `director` (`id_director`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table cinema_chloe.movie : ~20 rows (environ)
-INSERT INTO `movie` (`id_movie`, `movie_title`, `releaseYear`, `duration`, `synopsis`, `rating`, `poster`, `id_realisator`) VALUES
+INSERT INTO `movie` (`id_movie`, `movie_title`, `releaseYear`, `duration`, `synopsis`, `rating`, `poster`, `id_director`) VALUES
 	(1, 'The Matrix', '1999-03-31', 136, 'A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.', 87, 'matrix.jpg', 1),
 	(2, 'Inception', '2010-07-16', 148, 'A thief who enters the dreams of others to steal secrets from their subconscious is given the task of planting an idea into the mind of a CEO.', 86, 'inception.jpg', 1),
 	(3, 'Titanic', '1997-12-19', 195, 'A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.', 90, 'titanic.jpg', 2),
@@ -193,16 +193,16 @@ INSERT INTO `person` (`id_person`, `person_name`, `person_surname`, `sex`, `date
 	(25, 'Ross', 'Gary', 'male', '1956-11-03');
 
 -- Listage de la structure de table cinema_chloe. realisator
-CREATE TABLE IF NOT EXISTS `realisator` (
-  `id_realisator` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `director` (
+  `id_director` int NOT NULL AUTO_INCREMENT,
   `id_person` int NOT NULL,
-  PRIMARY KEY (`id_realisator`),
+  PRIMARY KEY (`id_director`),
   KEY `id_person` (`id_person`),
-  CONSTRAINT `FK_realisator_person` FOREIGN KEY (`id_person`) REFERENCES `person` (`id_person`)
+  CONSTRAINT `FK_director_person` FOREIGN KEY (`id_person`) REFERENCES `person` (`id_person`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table cinema_chloe.realisator : ~5 rows (environ)
-INSERT INTO `realisator` (`id_realisator`, `id_person`) VALUES
+INSERT INTO `director` (`id_director`, `id_person`) VALUES
 	(1, 21),
 	(2, 22),
 	(3, 23),
